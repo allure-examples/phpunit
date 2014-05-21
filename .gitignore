@@ -1,2 +1,4 @@
 allure-report-data/*
 output/*
+vendor/
+composer.lock
