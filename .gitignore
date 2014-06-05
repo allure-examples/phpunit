@@ -2,3 +2,5 @@ allure-report-data/*
 output/*
 vendor/
 composer.lock
+.idea
+*.iml

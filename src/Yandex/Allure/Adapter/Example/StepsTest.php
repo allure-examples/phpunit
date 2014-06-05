@@ -35,35 +35,6 @@ class StepsTest extends PHPUnit_Framework_TestCase
 
     }
 
-    /**
-     * This test runs the same three steps but organized in a tree.
-     */
-    public function testStepsTree()
-    {
-        $number = 8;
-
-        $this->executeSteps(array(
-            "$number is positive (contains child step)" => array(
-                Support\STEP_LOGIC_KEY => function () use ($number) {
-                    $this->isPositive($number);
-                },
-                Support\STEP_CHILD_STEPS_KEY => array(
-                    "$number is greater than 11 (failing assertion)" => array(
-                        Support\STEP_LOGIC_KEY => function () use ($number) {
-                            $this->greaterThanEleven($number);
-                        }
-                    ),
-                )
-            ),
-            "Some exception in assertion about $number" => array(
-                Support\STEP_LOGIC_KEY => function () use ($number) {
-                    $this->assertionWithException($number);
-                },
-                Support\STEP_TITLE_KEY => 'Custom title for this step'
-            )
-        ));
-    }
-
     private function isPositive($number)
     {
         $this->assertTrue($number > 0);
