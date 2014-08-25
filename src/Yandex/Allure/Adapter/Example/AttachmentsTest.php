@@ -4,7 +4,6 @@ namespace Yandex\Allure\Adapter\Example;
 
 use PHPUnit_Framework_TestCase;
 use Yandex\Allure\Adapter\Annotation\Title;
-use Yandex\Allure\Adapter\Model\AttachmentType;
 use Yandex\Allure\Adapter\Support\AttachmentSupport;
 
 /**
@@ -21,16 +20,13 @@ class AttachmentsTest extends PHPUnit_Framework_TestCase
     public function testProcessAttachments()
     {
         $filePathFromMethod = $this->outputSomeContentToTemporaryFile();
-        $this->addAttachment($filePathFromMethod, 'Content from temporary file', AttachmentType::TXT);
+        $this->addAttachment($filePathFromMethod, 'Content from temporary file', 'text/plain');
         $this->assertTrue(file_exists($filePathFromMethod));
 
         $contentsFromMethod = $this->outputSomeContentDirectly();
-        $this->addAttachment($contentsFromMethod, 'Content from method return type', AttachmentType::TXT);
+        $this->addAttachment($contentsFromMethod, 'Content from method return type', 'text/html');
         $this->assertTrue(strlen($contentsFromMethod) > 0);
 
-        $url = $this->getUrl();
-        $this->addAttachment($url, 'An url pointing to website', AttachmentType::OTHER);
-        $this->assertTrue(strlen($url) > 0);
     }
 
     private function outputSomeContentToTemporaryFile()
