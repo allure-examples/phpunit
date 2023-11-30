@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit defaultTestSuite="unit" colors="true">
+    <testsuites>
+        <testsuite name="unit">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
+    <extensions>
+        <bootstrap class="Qameta\Allure\PHPUnit\AllureExtension">
+            <parameter name="config" value="config/allure.config.php" />
+        </bootstrap>
+    </extensions>
+</phpunit>

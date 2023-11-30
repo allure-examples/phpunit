@@ -1,0 +1,49 @@
+name: Allure Report
+
+env:
+    ALLURE_RESULTS: build/allure-results
+
+on:
+  push:
+    branches-ignore:
+      - '!main'
+
+jobs:
+    autotests:
+        name: Run tests and generate Allure Report
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Set up .NET
+              uses: php-actions/composer@v6
+              with:
+                php_version: "8.1"
+                php_extensions: dom mbstring
+
+            - name: Run PHPUnit
+              uses: php-actions/phpunit@v3
+              continue-on-error: true
+
+            - name: Get Allure history
+              uses: actions/checkout@v4
+              if: always()
+              continue-on-error: true
+              with:
+                ref: gh-pages
+                path: gh-pages
+
+            - name: Generate Allure Report
+              uses: simple-elf/allure-report-action@v1.7
+              if: always()
+              with:
+                allure_results: ${{ env.ALLURE_RESULTS }}
+                allure_history: allure-history
+
+            - name: Deploy report to GitHub Pages
+              if: always()
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: allure-history
+                publish_branch: gh-pages

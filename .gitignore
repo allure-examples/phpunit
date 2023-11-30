@@ -1,6 +1,5 @@
-allure-report-data/*
-output/*
-vendor/
-composer.lock
-.idea
-*.iml
+/build/
+/vendor/
+.phpunit.result.cache
+allure-results
+allure-report
