@@ -1,6 +1,7 @@
 name: Allure Report
 
 env:
+    PHP_VERSION: "8.1"
     ALLURE_RESULTS: build/allure-results
 
 on:
@@ -15,14 +16,17 @@ jobs:
         steps:
             - uses: actions/checkout@v4
 
-            - name: Set up .NET
+            - name: Set up composer
               uses: php-actions/composer@v6
               with:
-                php_version: "8.1"
+                php_version: ${{ env.PHP_VERSION }}
                 php_extensions: dom mbstring
 
             - name: Run PHPUnit
               uses: php-actions/phpunit@v3
+              with:
+                php_version: ${{ env.PHP_VERSION }}
+                bootstrap: vendor/autoload.php
               continue-on-error: true
 
             - name: Get Allure history

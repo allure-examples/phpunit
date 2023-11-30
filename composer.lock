@@ -4,8 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "db02a164eece3daaa19a4e6550445f9e",
-    "packages": [
+    "content-hash": "646212e651de7b569455e0315cf3fbc6",
+    "packages": [],
+    "packages-dev": [
         {
             "name": "allure-framework/allure-php-commons",
             "version": "v2.3.1",
@@ -2247,7 +2248,6 @@
             "time": "2023-11-20T00:12:19+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],

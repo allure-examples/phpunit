@@ -2,11 +2,11 @@
     "name": "allure-examples/allure-phpunit",
     "description": "An example of using Allure PHPUnit",
     "require": {
-        "php": "^8.1",
-        "allure-framework/allure-phpunit": "^3.0.1"
+        "php": "^8.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "^10"
+        "phpunit/phpunit": "^10",
+        "allure-framework/allure-phpunit": "^3.0.1"
     },
     "autoload-dev": {
         "psr-4": {
